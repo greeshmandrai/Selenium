@@ -1,0 +1,89 @@
+package b;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+public class C {
+  public static void main(String[] args) {
+     System.setProperty("webdriver.gecko.driver","C:\\geckodriver.exe");
+       WebDriver driver = new FirefoxDriver();
+       driver.get("http://localhost:9000/?baseApiUrl=https://localhost:8443&tenantIdentifier=default#/home");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+  WebElement username= driver.findElement(By.id("uid")); 
+  username.sendKeys("conflux");
+        System.out.println("Username Test Pass");
+        //Type LastName in the LastName text box
+        WebElement password= driver.findElement(By.id("pwd"));
+        password.sendKeys("password");
+        System.out.println("password Test Pass");
+        // Click on the Submit button
+        WebElement submit= driver.findElement(By.id("login-button"));
+        submit.click();
+        System.out.println("Sign In Test Pass"); 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        WebElement Clients1= driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/nav/div/div/ul[1]/li[1]/a"));
+        Clients1.click(); 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        WebElement grp2= driver.findElement(By.xpath("//*[contains(text(),'Groups')]"));
+        grp2.click(); 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        WebElement createGP= driver.findElement(By.xpath("//*[contains(text(),'Create Group')]"));
+        createGP.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+   WebElement office= driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div/div/div/div/div/form/fieldset/div[1]/div[1]/div[1]/div/a/span"));
+    office.click();  
+   
+    try {
+        Thread.sleep(5000);
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    driver.findElement(By.xpath("//li[contains(.,'Head Office')]")).click();
+  /*  WebElement mySelectElement = driver.findElement(By.xpath("//*[contains(text(),'Head Office')]"));
+    Select dropdown= new Select(mySelectElement);*/
+/*          Select head = new Select(driver.findElement(By.name("office")));
+          head.selectByIndex(1);*/
+          
+          /*new Select (driver.findElement(By.id("officeId_chosen"))).selectByVisibleText("Head Office");*/
+        WebElement GpName= driver.findElement(By.xpath("//*[@id=\"name\"]"));
+        GpName.sendKeys("A1");
+        WebElement Active= driver.findElement(By.xpath(" //*[@id=\"active\"]"));
+        Active.click();
+       
+        WebElement AddClients= driver.findElement(By.xpath("//*[@id=\"clientMembers\"]"));
+        AddClients.sendKeys("a1 b1 c1");
+        WebElement GpExternalID= driver.findElement(By.xpath("//*[@id=\"externalId\"]"));
+        GpExternalID.sendKeys("aaaaa");
+        WebElement Submit2= driver.findElement(By.xpath("//*[@id=\"save\"]"));
+        Submit2.click();
+       // driver.close();
+    }
+}
+
